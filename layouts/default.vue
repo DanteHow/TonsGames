@@ -1,7 +1,7 @@
 <template>
     <header class="shadow-sm bg-blue-200">
-        <div class="container bg-gray-400 flex justify-between mx-auto">
-            <div class="order-first">
+        <div class="flex justify-between mx-auto p-3">
+            <div class="order-first flex items-center">
                 <div><NuxtLink to="/">TonsGames</NuxtLink></div>
             </div>
             <div class="flex gap-5">

@@ -1,11 +1,45 @@
 <template>
-    <div class="container grid grid-cols-4 p-4">
-        <div class="bg-blue-200 w-70 md:auto h-72 flex flex-col items-center justify-center gap-2">
-            <div class="bg-yellow-200 w-64 h-52">
-
+    <div class="">
+        <div class="grid grid-cols-4 p-4">
+            <div class="bg-blue-200 gamecard">
+                <div class="">
+                    Minesweeper
+                </div>
+                <div>
+                    <Buttons Prompt="Minesweeper" Directory="/Minesweeper"/>
+                </div>
             </div>
-            <div>
-                <Buttons Prompt="Minesweeper" Directory="/Minesweeper"/>
+            <div class="p-4 mx-auto md-auto sm-auto flex flex flex-col items-center justify-center gap-2">
+                <div>
+                    Snake Game
+                </div>
+                <div>
+                    <Buttons Prompt="SnakeGame" Directory="/Minesweeper"/>
+                </div>
+            </div>
+            <div class="p-4 mx-auto md-auto sm-auto flex flex flex-col items-center justify-center gap-2">
+                <div>
+                    Sudoku
+                </div>
+                <div>
+                    <Buttons Prompt="Sudoku" Directory="/Minesweeper"/>
+                </div>
+            </div>
+            <div class="p-4 mx-auto md-auto sm-auto flex flex flex-col items-center justify-center gap-2">
+                <div>
+                    Minesweeper
+                </div>
+                <div>
+                    <Buttons Prompt="Minesweeper" Directory="/Minesweeper"/>
+                </div>
+            </div>
+            <div class="p-4 mx-auto md-auto sm-auto flex flex flex-col items-center justify-center gap-2">
+                <div>
+                    Minesweeper
+                </div>
+                <div>
+                    <Buttons Prompt="Minesweeper" Directory="/Minesweeper"/>
+                </div>
             </div>
         </div>
     </div>

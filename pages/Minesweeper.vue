@@ -1,7 +1,7 @@
 <template>
-    <div>
-        <div>
-            <h1>Minesweeper</h1>
+    <div class="container mx-auto flex flex-col items-center p-5">
+        <div class="p-4">
+            <p class="text-3xl"><strong>Minesweeper</strong></p>
         </div>
         <div>
             <button
@@ -10,14 +10,14 @@
                     
                 }"
             >
-                <span></span>
+                <span>Bomb</span>
             </button>
         </div>
         <div>
             <div>Select Difficulty</div>
             <div>
-                <select v-model="Selected">
-                    <option disabled value="">{{ Selected }}</option>
+                <select v-model="Difficulties">
+                    <option disabled :value=Difficulties>{{ Difficulties }}</option>
                     <option value="Easy">Easy</option>
                     <option value="Medium">Medium</option>
                     <option value="Hard">Hard</option>
@@ -31,5 +31,5 @@
 </template>
 
 <script setup>
-    let selected = ref('Please Select One')
+    let Difficulties = ref('Medium')
 </script>
