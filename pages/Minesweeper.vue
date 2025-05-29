@@ -4,7 +4,7 @@
             <div>Select Difficulties: </div>
             <!-- <UselectMenu v-model="value" :items="items" class="w-48"/> -->
         </div>
-        <div class="grid gap-1 flex justify-center" :style="{ gridTemplateColumns: `repeat(${cols}, 2rem)` }">
+        <div class="grid flex justify-center" :style="{ gridTemplateColumns: `repeat(${cols}, 2rem)` }">
                 <button
                     v-for="cell in flatGrid"
                     :key="`${cell.row}-${cell.col}`"
@@ -14,14 +14,25 @@
                         'bg-white': !cell.isRevealed,
                         'bg-red': cell.isMine && cell.isRevealed
                     }"
-                    @click="handleClick(cell)"  
+                    @click="handleClick(cell)" 
+                    @contextmenu.prevent="placeFlag(cell)" 
                 >
                     <span v-if="cell.isRevealed">
                         {{ cell.isMine ? '💣' : cell.adjacentMines || '' }}
                     </span>
+                    <span v-if="cell.isFlaged">
+                        🚩
+                    </span>
                 </button>
         </div>
-        <p v-if="gameOver" class="text-red-600 font-bold mt-4">💥 Game Over!</p>
+        <div>
+            <UButton>Button</UButton>
+        </div>
+        <div v-if="gameOver">
+            <!-- <ModalDialog :show="modelOpen" @close="modelOpen = false">
+                <p v-if="gameOver" class="text-red-600 font-bold mt-4">💥 Game Over!</p>
+            </ModalDialog> -->
+        </div>
         <button @click="testAlert()">Test</button>
     </div>
     
@@ -34,8 +45,11 @@
     placeMines,
     calculateAdjacents,
     revealCell,
-    type Cell
+    type Cell,
+    MinesLocation
     } from '@/TSFolder/minesweeper'
+
+    const modelOpen = ref(false)
 
     const items = ref(['Easy', 'Medium', 'Hard'])
     const value = ref('Medium')
@@ -48,31 +62,32 @@
     const gameOver = ref(false)
 
     onMounted(() => {
-    grid.value = createGrid(rows, cols)
-    placeMines(grid.value, mines)
-    calculateAdjacents(grid.value)
+        grid.value = createGrid(rows, cols)
+        placeMines(grid.value, mines)
+        calculateAdjacents(grid.value)
     })
 
     const flatGrid = computed(() => grid.value.flat())
 
     function handleClick(cell: Cell) {
-        if (cell.isRevealed && cell.isMine) {
+        if (cell.isMine) {
             gameOver.value = true
-            revealAllMines(grid.value, cell.row, cell.col)
+            revealAllMines()
+            // Do a game over pop up menu
         }
-        else {
-            return revealCell(grid.value, cell.row, cell.col)
-        }
+        return revealCell(grid.value, cell.row, cell.col)
     }
 
-    function revealAllMines(grid: Cell[][], row: number, col: number) {
-        for (let r = 0; r < row; r++) {
-            for (let c = 0; c < col; c++) {
-                const cell = grid[r][c]
-                if (!cell.isMine) continue
-                cell.isRevealed = true
-            }
-        }
+    function revealAllMines() {
+        MinesLocation.forEach(coordinate => {
+            const x = coordinate[0]
+            const y = coordinate[1]
+            grid.value[x][y].isRevealed = true
+        })
+    }
+
+    function placeFlag(cell: Cell) {
+        if (!cell.isRevealed) cell.isFlaged = !cell.isFlaged
     }
 
     function testAlert() {

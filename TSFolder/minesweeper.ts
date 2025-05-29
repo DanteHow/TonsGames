@@ -3,8 +3,12 @@ export interface Cell {
   col: number
   isMine: boolean
   isRevealed: boolean
+  isFlaged: boolean
   adjacentMines: number
 }
+
+type MinesCoordinate = [number, number]
+export const MinesLocation: MinesCoordinate[] = []
 
 export function createGrid(rows: number, cols: number): Cell[][] {
   return Array.from({ length: rows }, (_, r) =>
@@ -13,6 +17,7 @@ export function createGrid(rows: number, cols: number): Cell[][] {
       col: c,
       isMine: false,
       isRevealed: false,
+      isFlaged: false,
       adjacentMines: 0
     }))
   )
@@ -28,6 +33,7 @@ export function placeMines(grid: Cell[][], totalMines: number) {
     const c = Math.floor(Math.random() * cols)
     if (!grid[r][c].isMine) {
       grid[r][c].isMine = true
+      MinesLocation.push([r,c])
       placed++
     }
   }
