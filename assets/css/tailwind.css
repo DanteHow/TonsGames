@@ -1,12 +1,10 @@
+/* Seems like something not allowed to use this file casues error */
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer components{
-    .btn {
-        @apply bg-[#12b488] text-white px-3 py-2 rounded-md text-sm text-white;
-    }
-
     .gamecard {
         @apply p-4 flex flex flex-col items-center justify-center gap-2;
     }

@@ -1,7 +1,7 @@
 <template>
     <div class="">
         <div class="grid grid-cols-4 p-4">
-            <div class="bg-blue-200 gamecard">
+            <div class="bg-blue-200 p-4 mx-auto md-auto sm-auto flex flex flex-col items-center justify-center gap-2">
                 <div class="">
                     Minesweeper
                 </div>

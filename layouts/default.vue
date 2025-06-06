@@ -6,7 +6,7 @@
             </div>
             <div class="flex gap-5">
                 <div><Buttons Prompt="Login" Directory="/Login"/></div>
-                <div><Buttons Prompt="Open Source Code" Directory="/Test"/></div>
+                <div><Buttons Prompt="Open Source Code" Directory="/nuxt-ui-test"/></div>
             </div>
         </div>
     </header>
