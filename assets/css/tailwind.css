@@ -1,11 +1,13 @@
 /* Seems like something not allowed to use this file casues error */
+@import "tailwindcss";
+@import "@nuxt/ui";
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@layer{
+    .btn {
+        @apply text-white bg-[#12b488] px-3 py-2 rounded-md text-sm;
+    }
 
-@layer components{
     .gamecard {
-        @apply p-4 flex flex flex-col items-center justify-center gap-2;
+        @apply bg-blue-200 p-4 flex flex flex-col items-center justify-center gap-2;
     }
 }

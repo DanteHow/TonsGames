@@ -1,5 +1,5 @@
 <template>
-    <button class="text-white bg-[#12b488] px-3 py-2 rounded-md text-sm">
+    <button class="btn">
         <NuxtLink :to="Directory">{{ Prompt }}</NuxtLink>
     </button>
 </template>

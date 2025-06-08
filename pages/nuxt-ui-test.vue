@@ -34,7 +34,7 @@ const handleClick = () => {
             content: 'w-48',
           }"
         >
-          <UButton label="Open" icon="i-lucide-menu" color="neutral" variat="outline"/>
+          <UButton label="Open" icon="i-lucide-layout-list" color="neutral" variat="outline"/>
         </UDropdownMenu>
       </div>
 
